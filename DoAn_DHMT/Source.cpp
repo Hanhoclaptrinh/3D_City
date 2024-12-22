@@ -1,31 +1,34 @@
-﻿#include <GL/glut.h>
+﻿/**
+    Sub: Do Hoa May Tinh
+    Group: CODE KHONG BUG
+    Le Vinh Han - 2251068192
+    Nguyen Thai Bao Duy - ???
+*/
+
+#include <GL/glut.h>
 #include <math.h>
 
-float cameraAngleX = 0.0f; // goc quay quanh truc x
-float cameraAngleY = 0.0f; // goc quay quanh truc y
-float cameraDistance = 30.0f; // khoang cach tu camera den trung tam thanh pho
+float cameraAngleX = 0.0; // goc quay quanh truc x
+float cameraAngleY = 0.0; // goc quay quanh truc y
+float cameraDistance = 30.0; // khoang cach tu camera den trung tam thanh pho
 bool isDragging = false; // co trang thai
 int lastMouseX, lastMouseY;
 
-// vi tri ban dau cua xe bus
-float busPositionX = -15.0f; // vi tri ban dau cua xe bus
-float busSpeed = 0.05f; // toc do cua bus
-
-// luu vi tri cac dam may
+// luu vi tri cac dam may (luu boi mang hai chi)
 float cloudPositions[10][3] = {
-    {15.0f, 10.0f, 5.0f},
-    {5.0f, 7.0f, -10.0f},
-    {10.0f, 8.0f, -5.0f},
-    {10.0f, 17.0f, 10.0f},
-    {0.0f, 20.0f, 15.0f},
-    {-10.0f, 9.0f, -10.0f},
-    {-15.0f, 10.0f, 4.0f},
-    {-15.0f, 20.0f, 0.0f},
-    {-15.0f, 10.0f, -7.0f},
-    {7.0f, 15.0f, -2.0f}
+    {15.0, 10.0, 5.0},
+    {5.0, 7.0, -10.0},
+    {10.0, 8.0, -5.0},
+    {10.0, 17.0, 10.0},
+    {0.0, 20.0, 15.0},
+    {-10.0, 9.0, -10.0},
+    {-15.0, 10.0, 4.0},
+    {-15.0, 20.0, 0.0},
+    {-15.0, 10.0, -7.0},
+    {7.0, 15.0, -2.0}
 };
 
-float cloudSpeed = 0.008f; // toc do di chuyen cua may
+float cloudSpeed = 0.008; // toc do di chuyen cua may
 
 bool isNight = false; // co kiem tra trang thai ngay dem
 
@@ -33,27 +36,27 @@ bool isXRed = false; // co trang thai den giao thong
 bool showClouds = true; // trang thai may (khong hien thi may khi troi toi)
 
 // vi tri den giao thong
-float trafficLight1X = 9.0f;  // den truc Z
-float trafficLight1Z = 2.0f;
+float trafficLight1X = 9.0;  // den truc Z
+float trafficLight1Z = 2.0;
 
-float trafficLight2X = 5.0f;  // den truc X
-float trafficLight2Z = -2.0f;
+float trafficLight2X = 5.0;  // den truc X
+float trafficLight2Z = -2.0;
 
 struct Color {
     float r, g, b;
 };
 
-// Mảng màu cho các tòa nhà
+// bang mau cho cac toa nha
 Color buildingColors[] = {
-    {0.9f, 0.7f, 0.5f},  // Màu be đậm hơn
-    {0.4f, 0.8f, 0.8f},  // Xanh đậm
-    {0.9f, 0.3f, 0.3f},  // Hồng đậm hơn
-    {0.9f, 0.4f, 0.6f},  // Giữ nguyên hồng
-    {0.4f, 0.6f, 0.9f},  // Xanh dương đậm
-    {0.6f, 0.4f, 0.7f},  // Tím đậm hơn
-    {0.9f, 0.7f, 0.4f},  // Vàng đậm hơn
-    {0.4f, 0.9f, 0.6f},  // Xanh lá đậm hơn
-    {0.9f, 0.5f, 0.4f}   // Cam đậm hơn
+    {0.9, 0.7, 0.5},  
+    {0.4, 0.8, 0.8},  
+    {0.9, 0.3, 0.3},  
+    {0.9, 0.4, 0.6},  
+    {0.4, 0.6, 0.9},  
+    {0.6, 0.4, 0.7},  
+    {0.9, 0.7, 0.4},  
+    {0.4, 0.9, 0.6},  
+    {0.9, 0.5, 0.4}   
 };
 
 // su kien phim
@@ -61,14 +64,14 @@ void keyboard(unsigned char key, int x, int y) {
     if (key == 'n') {
         isNight = true;
         showClouds = false; // tat may khi troi toi
-        glClearColor(0.15f, 0.15f, 0.15f, 1.0f);
+        glClearColor(0.15, 0.15, 0.15, 1.0);
         glDisable(GL_LIGHT0);
         glEnable(GL_LIGHT1);
     }
     else if (key == 'd') {
         isNight = false;
         showClouds = true; // hien thi may khi troi sang
-        glClearColor(0.5f, 0.8f, 1.0f, 1.0f);
+        glClearColor(0.5, 0.8, 1.0, 1.0);
         glEnable(GL_LIGHT0);
         glDisable(GL_LIGHT1);
     }
@@ -87,13 +90,13 @@ void init() {
     glEnable(GL_LIGHT0);  // anh sang chinh
     glEnable(GL_LIGHT1);  // anh sang phu (anh sang den duong vao ban dem)
     glEnable(GL_COLOR_MATERIAL);
-    glClearColor(0.5f, 0.8f, 1.0f, 1.0f);
+    glClearColor(0.5, 0.8, 1.0, 1.0);
 
     // anh sang ban ngay
-    GLfloat dayLight_position[] = { 0.0f, 10.0f, 0.0f, 1.0f };
-    GLfloat dayLight_ambient[] = { 0.4f, 0.4f, 0.4f, 1.0f };
-    GLfloat dayLight_diffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-    GLfloat dayLight_specular[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+    GLfloat dayLight_position[] = { 0.0, 10.0, 0.0, 1.0 };
+    GLfloat dayLight_ambient[] = { 0.4, 0.4, 0.4, 1.0 };
+    GLfloat dayLight_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
+    GLfloat dayLight_specular[] = { 1.0, 1.0, 1.0, 1.0 };
 
     glLightfv(GL_LIGHT0, GL_POSITION, dayLight_position);
     glLightfv(GL_LIGHT0, GL_AMBIENT, dayLight_ambient);
@@ -101,9 +104,9 @@ void init() {
     glLightfv(GL_LIGHT0, GL_SPECULAR, dayLight_specular);
 
     // anh sang ban dem
-    GLfloat nightLight_ambient[] = { 0.1f, 0.1f, 0.15f, 1.0f };
-    GLfloat nightLight_diffuse[] = { 0.3f, 0.3f, 0.4f, 1.0f };
-    GLfloat nightLight_specular[] = { 0.5f, 0.5f, 0.5f, 1.0f };
+    GLfloat nightLight_ambient[] = { 0.1, 0.1, 0.15, 1.0 };
+    GLfloat nightLight_diffuse[] = { 0.3, 0.3, 0.4, 1.0 };
+    GLfloat nightLight_specular[] = { 0.5, 0.5, 0.5, 1.0 };
 
     glLightfv(GL_LIGHT1, GL_AMBIENT, nightLight_ambient);
     glLightfv(GL_LIGHT1, GL_DIFFUSE, nightLight_diffuse);
@@ -113,26 +116,26 @@ void init() {
 }
 
 // vi tri va huong cua may bay
-float planeX1 = -15.0f;
-float planeY1 = 15.0f;
-float planeZ1 = 5.0f;
-float planeSpeed1 = 0.01f;
+float planeX1 = -15.0;
+float planeY1 = 15.0;
+float planeZ1 = 5.0;
+float planeSpeed1 = 0.01;
 
-float planeX2 = -20.0f;
-float planeY2 = 12.0f;
-float planeZ2 = -10.0f;
-float planeSpeed2 = 0.01f;
+float planeX2 = -20.0;
+float planeY2 = 12.0;
+float planeZ2 = -10.0;
+float planeSpeed2 = 0.01;
 
-float planeX3 = -10.0f;
-float planeY3 = 6.0f;
-float planeZ3 = -2.0f;
-float planeSpeed3 = 0.01f;
+float planeX3 = -10.0;
+float planeY3 = 6.0;
+float planeZ3 = -2.0;
+float planeSpeed3 = 0.01;
 
 // than may bay
 void drawPlaneBody() {
     glPushMatrix();
-    glColor3f(0.9f, 0.9f, 0.9f);
-    glScalef(2.0f, 0.5f, 0.5f);
+    glColor3f(0.9, 0.9, 0.9);
+    glScalef(2.0, 0.5, 0.5);
     glutSolidCube(1.0);
     glPopMatrix();
 }
@@ -140,8 +143,8 @@ void drawPlaneBody() {
 // canh may bay
 void drawPlaneWings() {
     glPushMatrix();
-    glColor3f(0.5f, 0.8f, 0.9f);
-    glScalef(1.0f, 0.1f, 3.0f);
+    glColor3f(0.5, 0.8, 0.9);
+    glScalef(1.0, 0.1, 3.0);
     glutSolidCube(1.0);
     glPopMatrix();
 }
@@ -149,9 +152,9 @@ void drawPlaneWings() {
 // Ve duoi may bay
 void drawPlaneTail() {
     glPushMatrix();
-    glColor3f(0.6f, 0.6f, 0.6f);
-    glTranslatef(-0.8f, 0.3f, 0.0f);
-    glScalef(0.5f, 0.5f, 0.8f);
+    glColor3f(0.6, 0.6, 0.6);
+    glTranslatef(-0.8, 0.3, 0.0);
+    glScalef(0.5, 0.5, 0.8);
     glutSolidCube(1.0);
     glPopMatrix();
 }
@@ -213,14 +216,13 @@ void updatePlane(int value) {
     glutTimerFunc(16, updatePlane, 0);
 }
 
-// Vẽ một cửa sổ
+// ve cua so
 void drawWindow(float size) {
     if (isNight) {
-        // Ban đêm: cửa sổ phát sáng màu vàng
+        // thay doi mau cua so khi troi toi
         glColor3f(0.9f, 0.8f, 0.4f);
     }
     else {
-        // Ban ngày: cửa sổ màu xanh nhạt
         glColor3f(0.7f, 0.8f, 0.9f);
     }
 
@@ -228,14 +230,14 @@ void drawWindow(float size) {
     glScalef(size, size, 0.1);
     glutSolidCube(1.0);
 
-    // Khung cửa sổ
+    // khung cua so
     glColor3f(0.3f, 0.3f, 0.3f);
     glLineWidth(2.0);
     glBegin(GL_LINES);
-    // Khung ngang
+    // khung ngang
     glVertex3f(-0.5f, 0.0f, 0.1f);
     glVertex3f(0.5f, 0.0f, 0.1f);
-    // Khung dọc
+    // khung doc
     glVertex3f(0.0f, -0.5f, 0.1f);
     glVertex3f(0.0f, 0.5f, 0.1f);
     glEnd();
@@ -243,26 +245,24 @@ void drawWindow(float size) {
     glPopMatrix();
 }
 
-// Vẽ cửa
+// ve cua
 void drawDoor(float width, float height) {
     glColor3f(0.4f, 0.2f, 0.1f);
     glPushMatrix();
     glScalef(width, height, 0.1);
     glutSolidCube(1.0);
 
-    // Tay nắm cửa
     glColor3f(0.8f, 0.8f, 0.8f);
-    glTranslatef(0.3f, 0.0f, 0.1f);
+    glTranslatef(0.3f, 0.0f, 1.0f);
     glutSolidSphere(0.1, 8, 8);
     glPopMatrix();
 }
 
-// Vẽ tòa nhà với cửa sổ
+// ve nha
 void drawBuilding(float x, float y, float z, float width, float height, float depth, int colorIndex) {
     glPushMatrix();
     glTranslatef(x, y + height / 2, z);
 
-    // Vẽ thân tòa nhà
     Color buildingColor = buildingColors[colorIndex % 8];
     glColor3f(buildingColor.r, buildingColor.g, buildingColor.b);
     glPushMatrix();
@@ -270,24 +270,22 @@ void drawBuilding(float x, float y, float z, float width, float height, float de
     glutSolidCube(1.0);
     glPopMatrix();
 
-    // Số tầng và số cửa sổ mỗi tầng
     int floors = (int)(height / 2.0);
     int windowsPerFloor = (int)(width / 1.2);
     float windowSize = 0.4;
     float windowSpacing = width / (windowsPerFloor + 1);
     float floorHeight = height / (floors + 1);
 
-    // Vẽ cửa ở tầng trệt
     glPushMatrix();
     glTranslatef(0, -height / 2 + 0.7, depth / 2 + 0.01);
     drawDoor(0.8, 1.4);
     glPopMatrix();
 
-    // Vẽ cửa sổ cho mỗi tầng
+    // ve cua so cho moi tang
     for (int floor = 1; floor <= floors; floor++) {
         float y_pos = -height / 2 + floor * floorHeight;
 
-        // Cửa sổ mặt trước
+        // cua so mat truoc
         for (int w = 0; w < windowsPerFloor; w++) {
             float x_pos = -width / 2 + (w + 1) * windowSpacing;
 
@@ -296,14 +294,14 @@ void drawBuilding(float x, float y, float z, float width, float height, float de
             drawWindow(windowSize);
             glPopMatrix();
 
-            // Cửa sổ mặt sau
+            // cua so mat sau
             glPushMatrix();
             glTranslatef(x_pos, y_pos, -depth / 2 - 0.01);
             drawWindow(windowSize);
             glPopMatrix();
         }
 
-        // Cửa sổ hai bên
+        // cua so hai ben
         if (depth > 1.5) {
             int sideWindows = (int)(depth / 1.2);
             float sideSpacing = depth / (sideWindows + 1);
@@ -311,14 +309,12 @@ void drawBuilding(float x, float y, float z, float width, float height, float de
             for (int w = 0; w < sideWindows; w++) {
                 float z_pos = -depth / 2 + (w + 1) * sideSpacing;
 
-                // Bên trái
                 glPushMatrix();
                 glTranslatef(-width / 2 - 0.01, y_pos, z_pos);
                 glRotatef(90, 0, 1, 0);
                 drawWindow(windowSize);
                 glPopMatrix();
 
-                // Bên phải
                 glPushMatrix();
                 glTranslatef(width / 2 + 0.01, y_pos, z_pos);
                 glRotatef(90, 0, 1, 0);
@@ -363,6 +359,7 @@ void drawRoundTree(float x, float y, float z) {
     glPopMatrix();
 }
 
+// ve cay 
 void drawTriangleTree(float x, float y, float z) {
     // than cay
     glPushMatrix();
@@ -387,7 +384,7 @@ void drawTriangleTree(float x, float y, float z) {
     }
 }
 
-// Ve cay thong
+// ve cay thong
 void drawPineTree(float x, float y, float z) {
     // than cay
     glPushMatrix();
@@ -413,7 +410,7 @@ void drawPineTree(float x, float y, float z) {
 
 // ve den duong
 void drawLampPost(float x, float y, float z) {
-    // Thân đèn
+    // than den
     glPushMatrix();
     glTranslatef(x, y + 1.0, z);
     glColor3f(0.3, 0.3, 0.3);
@@ -438,7 +435,7 @@ void drawLampPost(float x, float y, float z) {
         glLightfv(GL_LIGHT1, GL_SPECULAR, lampLight_specular);
 
         // mau den duong sang
-        glColor3f(1.0, 1.0, 0.7);
+        glColor3f(0.9, 0.8, 0.0);
     }
     else {
         glColor3f(0.9, 0.9, 0.9);
@@ -448,6 +445,7 @@ void drawLampPost(float x, float y, float z) {
     glPopMatrix();
 }
 
+// den giao thong
 void drawTrafficLight(float x, float y, float z, bool isRed, bool faceX) {
     glPushMatrix();
     glTranslatef(x, y + 1.5f, z);
@@ -499,6 +497,7 @@ void drawRoad(float x, float y, float z, float width, float length) {
     glPopMatrix();
 }
 
+// he thong duong (nga tu)
 void drawRoadSystem() {
     drawRoad(0, 0.05, 0, 50, 3);
 
@@ -512,54 +511,25 @@ void drawRoadSystem() {
     glPopMatrix();
 }
 
+// vach ke duong
 void drawRoadMarkings() {
-    // Màu vạch kẻ đường
     glColor3f(1.0, 1.0, 1.0);
 
-    // Vạch kẻ đường ngang
     for (float x = -23.0f; x < 25.0f; x += 2.0f) {
         glPushMatrix();
-        glTranslatef(x, 0.1, 0);  // Nâng lên một chút để tránh z-fighting
+        glTranslatef(x, 0.1, 0);
         glScalef(1.0, 0.01, 0.2);
         glutSolidCube(1.0);
         glPopMatrix();
     }
 
-    // Vạch kẻ đường dọc
     for (float z = -17.0f; z < 18.0f; z += 2.0f) {
         glPushMatrix();
-        glTranslatef(7.0, 0.1, z);  // Đường dọc ở x = 7.0
+        glTranslatef(7.0, 0.1, z);  
         glScalef(0.2, 0.01, 1.0);
         glutSolidCube(1.0);
         glPopMatrix();
     }
-
-    // Vạch dừng xe tại ngã tư
-    // Vạch ngang
-    glPushMatrix();
-    glTranslatef(4.5, 0.01, 1.5);
-    glScalef(2.5, 0.01, 0.3);
-    glutSolidCube(1.0);
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslatef(4.5, 0.01, -1.5);
-    glScalef(2.5, 0.01, 0.3);
-    glutSolidCube(1.0);
-    glPopMatrix();
-
-    // Vạch dọc
-    glPushMatrix();
-    glTranslatef(5.5, 0.01, 0);
-    glScalef(0.3, 0.01, 2.5);
-    glutSolidCube(1.0);
-    glPopMatrix();
-
-    glPushMatrix();
-    glTranslatef(8.5, 0.01, 0);
-    glScalef(0.3, 0.01, 2.5);
-    glutSolidCube(1.0);
-    glPopMatrix();
 }
 
 // ve mat dat
@@ -578,26 +548,22 @@ void drawCustomCloud(float x, float y, float z, float size) {
     glTranslatef(x, y, z);
     glColor3f(1.0, 1.0, 1.0);
 
-    // Than may chinh
+    // hinh cau trung tam
     glutSolidSphere(size, 16, 16);
 
-    // Cac phan phu
+    // cac phan phu
     float offset = size * 1.2;
     float smallerSize = size * 0.8;
 
-    // Ben phai
     glTranslatef(offset, 0.0, 0.0);
     glutSolidSphere(smallerSize, 16, 16);
 
-    // Ben trai
     glTranslatef(-offset * 2, 0.0, 0.0);
     glutSolidSphere(smallerSize, 16, 16);
 
-    // Phia truoc
     glTranslatef(offset, 0.0, offset);
     glutSolidSphere(smallerSize * 0.9, 16, 16);
 
-    // Phia sau
     glTranslatef(0.0, 0.0, -offset * 2);
     glutSolidSphere(smallerSize * 0.9, 16, 16);
 
@@ -613,15 +579,16 @@ void drawSun(float x, float y, float z) {
     glPopMatrix();
 }
 
+// mat trang
 void drawMoon(float x, float y, float z) {
     glPushMatrix();
     glTranslatef(x, y, z);
-    glColor3f(0.95, 0.95, 0.95);  // Màu trắng hơi ngả xám
+    glColor3f(0.95, 0.95, 0.95); 
     glutSolidSphere(2.0, 50, 50);
     glPopMatrix();
 }
 
-// Them bien vi tri cho cac xe moi
+// vi tri cac xe
 float car1X = -19.0f;  // xe chay tren duong ngang
 float car2X = 19.0f;   // xe chay tren duong ngang (nguoc chieu)
 float car3Z = -14.0f;  // xe chay tren duong doc
@@ -631,23 +598,23 @@ float car6X = 21.5f;
 float car7Z = -16.5f;
 float car8Z = 14.0f;
 
-// Toc do cac xe
+// toc do cac xe
 float car1Speed = 0.05f;
-float car2Speed = -0.05f;  // am de chay nguoc lai
+float car2Speed = -0.05f;  // am de chay huong nguoc lai
 float car3Speed = 0.05f;
-float car4Speed = -0.05f;  // am de chay nguoc lai
+float car4Speed = -0.05f; 
 float car5Speed = 0.05f;
 float car6Speed = -0.05f;
 float car7Speed = 0.05f;
 float car8Speed = -0.05f;
 
-// Ham ve xe voi mau sac tuy chinh
+// ve xe voi mau sac tuy chinh
 void drawCar(float x, float y, float z, float r, float g, float b, bool isVertical = false) {
     // than xe
     glPushMatrix();
     if (isVertical) {
         glTranslatef(x, y + 0.5, z);
-        glRotatef(90, 0, 1, 0);  // xoay 90 do cho xe chay doc
+        glRotatef(90, 0, 1, 0);
     }
     else {
         glTranslatef(x, y + 0.5, z);
@@ -689,7 +656,7 @@ void drawCar(float x, float y, float z, float r, float g, float b, bool isVertic
     }
 }
 
-// Ham cap nhat vi tri cac xe moi
+// cap nhat vi tri cac xe 
 void updateCars(int value) {
     // cap nhat xe theo mau den giao thong
     if (!isXRed) { 
@@ -765,12 +732,11 @@ void display() {
     drawBuilding(22, 0, -16, 2, 6, 2, 4);
 
     glPushMatrix();
-    glTranslatef(-20, 0, 15); // Di chuyển tới vị trí tòa nhà
-    glRotatef(180, 0, 1, 0);   // Xoay 90 độ quanh trục Y (để hướng về trục Z)
-    glTranslatef(20, 0, -10); // Đưa về gốc để vẽ đúng vị trí
+    glTranslatef(-20, 0, 15); // di chuyen toi vi tri toa nha
+    glRotatef(180, 0, 1, 0);   // xoay toa nha quanh Y
+    glTranslatef(20, 0, -10); 
     drawBuilding(-20, 0, 10.5, 10, 15, 5, 3);
     glPopMatrix();
-
 
     if (isNight) {
         GLfloat mat_ambient[] = { 0.2f, 0.2f, 0.2f, 1.0f };
@@ -909,7 +875,7 @@ int main(int argc, char** argv) {
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(800, 600);
-    glutCreateWindow("Nam mo a di da phat");
+    glutCreateWindow("CODE KHONG BUG");
 
     init();
     glutDisplayFunc(display);
