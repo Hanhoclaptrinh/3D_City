@@ -1,0 +1,58 @@
+﻿  Source.cpp
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(207,23): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(208,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(208,21): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(208,15): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(209,24): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(209,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(215,23): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(216,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(225,23): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(226,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(226,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(226,15): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(227,24): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(227,14): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(233,23): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(248,29): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(251,29): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(251,24): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(251,19): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(303,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(303,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(303,15): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(304,21): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(315,25): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(315,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(315,15): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(317,17): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(326,38): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(334,18): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(334,44): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(336,30): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(341,30): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(351,22): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(352,27): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(352,21): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(352,15): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(353,20): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(366,18): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(368,19): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(371,28): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(371,18): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(403,27): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(407,27): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(410,24): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(410,19): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(418,22): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(418,48): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(420,28): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(425,28): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(432,22): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(432,48): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(434,38): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(439,38): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(540,20): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(552,23): warning C4305: 'argument': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\Source.cpp(553,24): warning C4305: 'argument': truncation from 'double' to 'float'
+  DoAn_DHMT.vcxproj -> C:\Users\Admin\Desktop\Demo\DoAn_DHMT\x64\Debug\DoAn_DHMT.exe
