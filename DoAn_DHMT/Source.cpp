@@ -1,4 +1,4 @@
-﻿/**
+﻿/*
     Sub: Do Hoa May Tinh
     Group: CODE KHONG BUG
     Le Vinh Han - 2251068192
@@ -7,6 +7,7 @@
 
 #include <GL/glut.h>
 #include <math.h>
+#include "raster_font.h"
 #define M_PI 3.14159265358979323846
 
 float cameraAngleX = 0.0; // goc quay quanh truc x
@@ -19,6 +20,36 @@ bool isNight = false; // co kiem tra trang thai ngay dem
 bool isXRed = false; // co trang thai den giao thong
 bool showClouds = true; // trang thai may (khong hien thi may khi troi toi)
 float lightRotation = 90.0f; // goc xoay cho den giao thong
+
+// vi tri va huong cua may bay
+float planeSpeed = 0.03; // toc do may bay
+float planeX1 = -15.0;
+float planeY1 = 15.0;
+float planeZ1 = 8.0;
+float planeX2 = -20.0;
+float planeY2 = 12.0;
+float planeZ2 = -10.0;
+float planeX3 = -10.0;
+float planeY3 = 13.0;
+float planeZ3 = -2.0;
+
+// vi tri cac xe
+float car1X = -19.0f;  // xe chay tren duong ngang
+float car2X = 19.0f;   // xe chay tren duong ngang (nguoc chieu)
+float car3Z = -14.0f;  // xe chay tren duong doc
+float car4Z = 16.5f;   // xe chay tren duong doc (nguoc chieu)
+float car5X = -21.5f;
+float car6X = 21.5f;
+float car7Z = -16.5f;
+float car8Z = 14.0f;
+float car9X = 19.0f;
+float car10X = 21.5f;
+float car11X = -21.5f;
+float car12X = -19.0f;
+
+// toc do cac xe
+float carSpeedPos = 0.05f; // toc do cho xe chay theo truc X
+float carSpeedNeg = -0.05f; // toc do cho xe chay theo truc X (nguoc chieu)
 
 /*----------Vi tri may----------*/
 float cloudPositions[10][3] = {
@@ -38,7 +69,7 @@ struct Color {
     float r, g, b;
 };
 
-// bang mau cho cac toa nha
+/*----------Bang mau cho nha----------*/
 Color buildingColors[] = {
     {0.9, 0.7, 0.5},  
     {0.4, 0.8, 0.8},  
@@ -51,47 +82,7 @@ Color buildingColors[] = {
     {0.9, 0.5, 0.4}   
 };
 
-// su kien phim
-void keyboard(unsigned char key, int x, int y) {
-    if (key == 'n') {
-        isNight = true;
-        showClouds = false;
-        glClearColor(0.15, 0.15, 0.15, 1.0);
-        glDisable(GL_LIGHT0);
-        glEnable(GL_LIGHT1);
-    }
-    else if (key == 'd') {
-        isNight = false;
-        showClouds = true;
-        glClearColor(0.5, 0.8, 1.0, 1.0);
-        glEnable(GL_LIGHT0);
-        glDisable(GL_LIGHT1);
-    }
-    else if (key == 'r') {
-        isXRed = true;
-    }
-    else if (key == 'g') {
-        isXRed = false;
-    }
-    glutPostRedisplay();
-}
-
-// vi tri va huong cua may bay
-float planeSpeed = 0.03; // toc do may bay
-
-float planeX1 = -15.0;
-float planeY1 = 15.0;
-float planeZ1 = 8.0;
-
-float planeX2 = -20.0;
-float planeY2 = 12.0;
-float planeZ2 = -10.0;
-
-float planeX3 = -10.0;
-float planeY3 = 13.0;
-float planeZ3 = -2.0;
-
-// than may bay
+/*----------Ve than may bay----------*/
 void drawPlaneBody() {
     glPushMatrix();
     glColor3f(0.9, 0.9, 0.9);
@@ -100,7 +91,7 @@ void drawPlaneBody() {
     glPopMatrix();
 }
 
-// canh may bay
+/*----------Ve canh may bay----------*/
 void drawPlaneWings() {
     glPushMatrix();
     glColor3f(0.5, 0.8, 0.9);
@@ -109,7 +100,7 @@ void drawPlaneWings() {
     glPopMatrix();
 }
 
-// Ve duoi may bay
+/*----------Ve duoi may bay----------*/
 void drawPlaneTail() {
     glPushMatrix();
     glColor3f(0.6, 0.6, 0.6);
@@ -119,16 +110,15 @@ void drawPlaneTail() {
     glPopMatrix();
 }
 
-// canh quat
+/*----------Ve canh quat may bay----------*/
 void drawPropeller() {
-    static float propAngle = 0.0f;
+    static float propAngle = 0.0f; // goc quay cua canh
     glPushMatrix();
-    // canh truoc 
     glTranslatef(1.0f, 0.0f, 0.0f);
     glRotatef(propAngle, 1.0f, 0.0f, 0.0f);
 
-    glColor3f(0.3f, 0.3f, 0.3f);
     // canh doc
+    glColor3f(0.3f, 0.3f, 0.3f);
     glPushMatrix();
     glScalef(0.1f, 1.0f, 0.1f);
     glutSolidCube(1.0);
@@ -144,13 +134,11 @@ void drawPropeller() {
     glPopMatrix();
 }
 
-// ve toan bo may bay
+/*----------Ve may bay----------*/
 void drawPlane(float& planeX, float planeY, float planeZ, float planeSpeed) {
     glPushMatrix();
 
     // di chuyen may bay theo truc X
-    planeX1 += planeSpeed;
-
     glTranslatef(planeX, planeY, planeZ);
     drawPlaneBody();
     drawPlaneWings();
@@ -160,27 +148,26 @@ void drawPlane(float& planeX, float planeY, float planeZ, float planeSpeed) {
     glPopMatrix();
 }
 
-// cap nhat may bay
+/*----------Cap nhat vi tri may bay----------*/
 void updatePlane(int value) {
     // cap nhat vi tri cho ba may bay
     planeX1 += planeSpeed;
     planeX2 += planeSpeed;
     planeX3 += planeSpeed;
 
-    // reset vi tri khi may bay ra khoi man hinh
+    // reset vi tri khi may bay ra khoi bien
     if (planeX1 > 20.0f) planeX1 = -20.0f;
     if (planeX2 > 20.0f) planeX2 = -20.0f;
     if (planeX3 > 20.0f) planeX3 = -20.0f;
 
-    glutPostRedisplay();
+    glutPostRedisplay(); // thuc hien ve lai
     glutTimerFunc(16, updatePlane, 0);
 }
 
-// ve cua so
+/*----------Ve cua so----------*/
 void drawWindow(float size) {
     if (isNight) {
-        // thay doi mau cua so khi troi toi
-        glColor3f(0.9f, 0.8f, 0.4f);
+        glColor3f(0.9f, 0.8f, 0.4f); // thay doi mau cua so khi troi toi
     }
     else {
         glColor3f(0.7f, 0.8f, 0.9f);
@@ -194,10 +181,8 @@ void drawWindow(float size) {
     glColor3f(0.3f, 0.3f, 0.3f);
     glLineWidth(2.0);
     glBegin(GL_LINES);
-    // khung ngang
     glVertex3f(-0.5f, 0.0f, 0.1f);
     glVertex3f(0.5f, 0.0f, 0.1f);
-    // khung doc
     glVertex3f(0.0f, -0.5f, 0.1f);
     glVertex3f(0.0f, 0.5f, 0.1f);
     glEnd();
@@ -205,7 +190,7 @@ void drawWindow(float size) {
     glPopMatrix();
 }
 
-// ve cua
+/*----------Ve cua chinh----------*/
 void drawDoor(float width, float height) {
     glColor3f(0.4f, 0.2f, 0.1f);
     glPushMatrix();
@@ -223,18 +208,18 @@ void drawBuilding(float x, float y, float z, float width, float height, float de
     glPushMatrix();
     glTranslatef(x, y + height / 2, z);
 
-    Color buildingColor = buildingColors[colorIndex % 8];
+    Color buildingColor = buildingColors[colorIndex % 8]; // lay mau sac tu danh sach da duoc khoi tao (co 8 mau voi idx tu 0 - 7)
     glColor3f(buildingColor.r, buildingColor.g, buildingColor.b);
     glPushMatrix();
     glScalef(width, height, depth);
     glutSolidCube(1.0);
     glPopMatrix();
 
-    int floors = (int)(height / 2.0);
-    int windowsPerFloor = (int)(width / 1.2);
-    float windowSize = 0.4;
-    float windowSpacing = width / (windowsPerFloor + 1);
-    float floorHeight = height / (floors + 1);
+    int floors = (int)(height / 2.0);                       // so tang cua toa nha
+    int windowsPerFloor = (int)(width / 1.2);              // so luong cua so cua moi tang
+    float windowSize = 0.4;                               // kich thuoc cua so
+    float windowSpacing = width / (windowsPerFloor + 1); // khoang cach giua cac cua so
+    float floorHeight = height / (floors + 1);          // do cao cac tang
 
     glPushMatrix();
     glTranslatef(0, -height / 2 + 0.7, depth / 2 + 0.01);
@@ -509,7 +494,7 @@ void drawCustomCloud(float x, float y, float z, float size) {
     glPopMatrix();
 }
 
-/*----------Cap nhat vi tri may (lam may troi)----------*/
+/*----------Cap nhat vi tri may----------*/
 void updateClouds(int value) {
     for (int i = 0; i < 10; i++) {
         cloudPositions[i][0] += cloudSpeed;
@@ -534,30 +519,12 @@ void drawSun(float x, float y, float z) {
 void drawMoon(float x, float y, float z) {
     glPushMatrix();
     glTranslatef(x, y, z);
-    glColor3f(0.95, 0.95, 0.95); 
+    glColor3f(0.75, 0.95, 0.0); 
     glutSolidSphere(2.0, 50, 50);
     glPopMatrix();
 }
 
-// vi tri cac xe
-float car1X = -19.0f;  // xe chay tren duong ngang
-float car2X = 19.0f;   // xe chay tren duong ngang (nguoc chieu)
-float car3Z = -14.0f;  // xe chay tren duong doc
-float car4Z = 16.5f;   // xe chay tren duong doc (nguoc chieu)
-float car5X = -21.5f;
-float car6X = 21.5f;
-float car7Z = -16.5f;
-float car8Z = 14.0f;
-float car9X = 19.0f;
-float car10X = 21.5f;
-float car11X = -21.5f;
-float car12X = -19.0f;
-
-// toc do cac xe
-float carSpeedPos = 0.05f; // toc do cho xe chay theo truc X
-float carSpeedNeg = -0.05f; // toc do cho xe chay theo truc X (nguoc chieu)
-
-// ve xe voi mau sac tuy chinh
+/*----------Ve xe----------*/
 void drawCar(float x, float y, float z, float r, float g, float b, bool isVertical = false) {
     // than xe
     glPushMatrix();
@@ -604,12 +571,11 @@ void drawCar(float x, float y, float z, float r, float g, float b, bool isVertic
         }
     }
 }
-void updateCars(int value) {
-    // Xe trục X chạy khi đèn X xanh (isXRed = false)
-    // Xe trục Z chạy khi đèn Z xanh (isXRed = true)
 
-    // Cập nhật xe trục X
-    if (!isXRed) { // Khi đèn X xanh thì xe X chạy
+/*----------Cap nhat vi tri xe----------*/
+void updateCars(int value) {
+    // cap nhat xe chay tren truc X
+    if (!isXRed) { // den xanh tren truc X
         car1X += carSpeedPos;
         if (car1X > 20.0f) car1X = -20.0f;
 
@@ -635,8 +601,8 @@ void updateCars(int value) {
         if (car12X > 20.0f) car12X = -20.0f;
     }
 
-    // Cập nhật xe trục Z 
-    if (isXRed) { // Khi đèn Z xanh (X đỏ) thì xe Z chạy
+    // cap nhat xe truc Z
+    if (isXRed) { // den xanh truc Z
         car3Z += carSpeedPos;
         if (car3Z > 15.0f) car3Z = -15.0f;
 
@@ -654,6 +620,38 @@ void updateCars(int value) {
     glutTimerFunc(16, updateCars, 0);
 }
 
+/*----------Ve ten----------*/
+
+/*----------Ve bang ten*/
+void drawBoard(float x, float y, float z) {
+    glPushMatrix();
+
+    // tru
+    glPushMatrix();
+    glColor3f(0.545f, 0.271f, 0.075f);
+    glTranslatef(x, y, z);
+    glRotatef(-90, 1, 0, 0);
+    GLUquadric* quad = gluNewQuadric();
+    gluCylinder(quad, 0.1, 0.1, 3.0, 20, 20);
+    gluDeleteQuadric(quad);
+    glPopMatrix();
+
+    // bang tren tru
+    glPushMatrix();
+    glColor3f(0.8, 0.8, 0.8);
+    glTranslatef(x, y + 3.5, z);
+    glScalef(3, 1.2, 0.1);
+    glutSolidCube(1.0);
+    glPopMatrix();
+
+    glPopMatrix();
+}
+
+void drawName() {
+    drawBoard(-2, 0, 17);
+}
+
+/*----------Ve cac vat the len man hinh----------*/
 void display() {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     glLoadIdentity();
@@ -682,6 +680,8 @@ void display() {
     /*----------He thong duong----------*/
     drawRoadSystem();
     drawRoadMarkings();
+
+    drawName();
 
     /*----------Nha----------*/
     drawBuilding(-23, 0, -16, 2, 8, 2, 0);
@@ -793,13 +793,31 @@ void display() {
     glutSwapBuffers();
 }
 
-/*----------Thiet lap lai vung hien thi----------*/
-void reshape(int w, int h) {
-    glViewport(0, 0, w, h);                                     // thiet lap lai width & height
-    glMatrixMode(GL_PROJECTION);                               // chuyen sang che do ma tran chieu
-    glLoadIdentity();                                         // ve ma tran don vi
-    gluPerspective(45, (double)w / (double)h, 1.0, 100.0);   // thiet lap chieu phoi canh
-    glMatrixMode(GL_MODELVIEW);                             // chuyen lai che do ma tran mo hinh
+/*----------Su kien phim----------*/
+void keyboard(unsigned char key, int x, int y) {
+    // chuyen trang thai ngay dem
+    if (key == 'n') {
+        isNight = true;
+        showClouds = false;                   // tat may vao ban dem
+        glClearColor(0.15, 0.15, 0.15, 1.0); // mau bau troi vao ban dem
+        glDisable(GL_LIGHT0);               // tat nguon sang chinh
+        glEnable(GL_LIGHT1);               // bat nguon sang phu
+    }
+    else if (key == 'd') {
+        isNight = false;
+        showClouds = true;                  // bat may neu troi sang
+        glClearColor(0.5, 0.8, 1.0, 1.0);  // bau troi ban ngay
+        glEnable(GL_LIGHT0);              // bat nguon sang chinh
+        glDisable(GL_LIGHT1);            // tat nguon sang phu
+    }
+    // chuyen doi trang thai den giao thong
+    else if (key == 'r') {
+        isXRed = true;
+    }
+    else if (key == 'g') {
+        isXRed = false;
+    }
+    glutPostRedisplay();
 }
 
 /*----------Tao su kien chuot----------*/
@@ -845,6 +863,15 @@ void motion(int x, int y) {
 
         glutPostRedisplay();
     }
+}
+
+/*----------Thiet lap lai vung hien thi----------*/
+void reshape(int w, int h) {
+    glViewport(0, 0, w, h);                                     // thiet lap lai width & height
+    glMatrixMode(GL_PROJECTION);                               // chuyen sang che do ma tran chieu
+    glLoadIdentity();                                         // ve ma tran don vi
+    gluPerspective(45, (double)w / (double)h, 1.0, 100.0);   // thiet lap chieu phoi canh
+    glMatrixMode(GL_MODELVIEW);                             // chuyen lai che do ma tran mo hinh
 }
 
 /*----------Khoi tao man hinh----------*/
