@@ -22,9 +22,9 @@ void display() {
 
     /*----------Camera----------*/
     gluLookAt(
-        cameraDistance * sin(cameraAngleY) * cos(cameraAngleX),
-        cameraDistance * sin(cameraAngleX),
-        cameraDistance * cos(cameraAngleY) * cos(cameraAngleX),
+        cameraX,
+        cameraY,
+        cameraZ,
         0.0, 0.0, 0.0,
         0.0, 1.0, 0.0
     );
@@ -165,7 +165,7 @@ void init() {
 
     /*----------Thiet lap anh sang ban ngay----------*/
     GLfloat dayLight_position[] = { 12.0, 8.5, 0.0, 1.0 };   // vi tri nguon sang
-    GLfloat dayLight_ambient[] = { 0.4, 0.4, 0.4, 1.0 };    // do sang moi truong ban ngay
+    GLfloat dayLight_ambient[] = { 0.6, 0.6, 0.6, 0.7 };    // do sang moi truong ban ngay
     GLfloat dayLight_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };   // anh sang khuech tan
     GLfloat dayLight_specular[] = { 1.0, 1.0, 1.0, 1.0 }; // anh sang phan xa
     glLightfv(GL_LIGHT0, GL_POSITION, dayLight_position);
