@@ -116,14 +116,26 @@ C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(486,24): warning C4305: 'argument
 C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(486,19): warning C4305: 'argument': truncation from 'double' to 'GLfloat'
 C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(494,22): warning C4305: 'initializing': truncation from 'double' to 'float'
 C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(494,48): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(496,37): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
 C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(496,28): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(501,37): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
 C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(501,28): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(508,22): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(508,48): warning C4305: '+=': truncation from 'double' to 'float'
-C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(510,38): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(515,38): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(576,34): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(576,28): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(576,22): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
-C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(585,27): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(506,37): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(506,28): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(511,37): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(511,28): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(518,22): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(518,48): warning C4305: '+=': truncation from 'double' to 'float'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(520,44): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(520,35): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(525,44): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(525,35): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(530,44): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(530,35): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(535,44): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(535,35): warning C4244: 'argument': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(596,34): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(596,28): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(596,22): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
+C:\Users\Admin\Desktop\Demo\DoAn_DHMT\draw.cpp(605,27): warning C4305: 'argument': truncation from 'double' to 'GLclampf'
   DoAn_DHMT.vcxproj -> C:\Users\Admin\Desktop\Demo\DoAn_DHMT\x64\Debug\DoAn_DHMT.exe

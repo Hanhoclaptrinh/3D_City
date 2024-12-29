@@ -1,7 +1,7 @@
 ﻿/*
-    Sub: Do Hoa May Tinh
-    Gr: CODE KHONG BUG
-    Le Vinh Han - 2251068192 (C)
+    Do Hoa May Tinh
+    CODE KHONG BUG
+    Le Vinh Han - 2251068192
     Nguyen Thai Bao Duy - 2251068181
 */
 
@@ -10,7 +10,6 @@
 #include "raster_font.h"
 #include "global.h"
 #include "draw.h"
-#define M_PI 3.14159265358979323846
 
 /*----------Ve cac vat the len man hinh----------*/
 void display() {
@@ -160,7 +159,7 @@ void init() {
     glEnable(GL_DEPTH_TEST); // kiem tra do sau
     glEnable(GL_LIGHTING);  // bat hieu ung chieu sang
     glEnable(GL_LIGHT0);   // anh sang chinh
-    glEnable(GL_LIGHT1);  // anh sang phu (anh sang den duong vao ban dem)
+    glEnable(GL_LIGHT1);  // anh sang phu 
     glEnable(GL_COLOR_MATERIAL);
     glClearColor(0.5, 0.8, 1.0, 1.0);
 

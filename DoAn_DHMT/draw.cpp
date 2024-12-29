@@ -82,7 +82,7 @@ void drawPropeller() {
 }
 
 /*----------Ve may bay----------*/
-void drawPlane(float& planeX, float planeY, float planeZ, float planeSpeed) {
+void drawPlane(float planeX, float planeY, float planeZ, float planeSpeed) {
     glPushMatrix();
 
     // di chuyen may bay theo truc X
@@ -476,11 +476,11 @@ void drawCar(float x, float y, float z, float r, float g, float b, bool isVertic
     // than xe
     glPushMatrix();
     if (isVertical) {
-        glTranslatef(x, y + 0.5, z);
+        glTranslatef(x, y + 0.6, z);
         glRotatef(90, 0, 1, 0);
     }
     else {
-        glTranslatef(x, y + 0.5, z);
+        glTranslatef(x, y + 0.6, z);
     }
     glColor3f(r, g, b);
     glScalef(1.5, 0.8, 0.8);
@@ -493,12 +493,22 @@ void drawCar(float x, float y, float z, float r, float g, float b, bool isVertic
         // banh xe cho xe chay doc
         for (float i = -0.4; i <= 0.4; i += 0.8) {
             glPushMatrix();
-            glTranslatef(x + 0.4, y, z + i);
+            glTranslatef(x + 0.3, y + 0.1, z + i);
             glutSolidSphere(0.15, 12, 12);
             glPopMatrix();
 
             glPushMatrix();
-            glTranslatef(x - 0.4, y, z + i);
+            glTranslatef(x + 0.3, y + 0.1, z - i);
+            glutSolidSphere(0.15, 12, 12);
+            glPopMatrix();
+
+            glPushMatrix();
+            glTranslatef(x - 0.3, y + 0.1, z + i);
+            glutSolidSphere(0.15, 12, 12);
+            glPopMatrix();
+
+            glPushMatrix();
+            glTranslatef(x - 0.3, y + 0.1, z - i);
             glutSolidSphere(0.15, 12, 12);
             glPopMatrix();
         }
@@ -507,12 +517,22 @@ void drawCar(float x, float y, float z, float r, float g, float b, bool isVertic
         // banh xe cho xe chay ngang
         for (float i = -0.4; i <= 0.4; i += 0.8) {
             glPushMatrix();
-            glTranslatef(x + i, y, z + 0.4);
+            glTranslatef(x + i, y + 0.1, z + 0.3);
             glutSolidSphere(0.15, 12, 12);
             glPopMatrix();
 
             glPushMatrix();
-            glTranslatef(x + i, y, z - 0.4);
+            glTranslatef(x - i, y + 0.1, z + 0.3);
+            glutSolidSphere(0.15, 12, 12);
+            glPopMatrix();
+
+            glPushMatrix();
+            glTranslatef(x + i, y + 0.1, z - 0.3);
+            glutSolidSphere(0.15, 12, 12);
+            glPopMatrix();
+
+            glPushMatrix();
+            glTranslatef(x - i, y + 0.1, z - 0.3);
             glutSolidSphere(0.15, 12, 12);
             glPopMatrix();
         }
@@ -580,9 +600,9 @@ void keyboard(unsigned char key, int x, int y) {
     else if (key == 'd') {
         isNight = false;
         showClouds = true;                  // bat may neu troi sang
-        glEnable(GL_LIGHT0);              // bat nguon sang chinh
-        glDisable(GL_LIGHT1);            // tat nguon sang phu
-        glClearColor(0.5, 0.8, 1.0, 1.0);  // bau troi ban ngay
+        glEnable(GL_LIGHT0);               // bat nguon sang chinh
+        glDisable(GL_LIGHT1);             // tat nguon sang phu
+        glClearColor(0.5, 0.8, 1.0, 1.0);// bau troi ban ngay
     }
     // chuyen doi trang thai den giao thong
     else if (key == 'r') {
@@ -609,7 +629,7 @@ void mouse(int button, int state, int x, int y) {
     /*
         scroll event
         btn == 3: scroll down
-        btn == 3: scroll up
+        btn == 4: scroll up
     */
     if (button == 3) {
         cameraDistance -= 1.0f;

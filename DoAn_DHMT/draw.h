@@ -11,7 +11,7 @@ void drawPlaneBody();
 void drawPlaneWings();
 void drawPlaneTail();
 void drawPropeller();
-void drawPlane(float& planeX, float planeY, float planeZ, float planeSpeed);
+void drawPlane(float planeX, float planeY, float planeZ, float planeSpeed);
 void updatePlane(int value);
 void drawWindow(float size);
 void drawDoor(float width, float height);
